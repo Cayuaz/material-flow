@@ -11,7 +11,21 @@ const createProductSchema = z.object({
   materials: z.array(materialSchema),
 });
 
-const updateProductShcema = createProductSchema.partial();
-type UpdateProductSchema = z.infer<typeof updateProductShcema>;
+const createMaterialShcema = z.object({
+  name: z.string(),
+  stock: z.number(),
+});
 
-export { createProductSchema, updateProductShcema, type UpdateProductSchema };
+const updateProductShcema = createProductSchema.partial();
+const updateMaterialSchema = createMaterialShcema.partial();
+
+type UpdateProductSchema = z.infer<typeof updateProductShcema>;
+type UpdateMaterialSchema = z.infer<typeof updateMaterialSchema>;
+
+export {
+  createProductSchema,
+  updateProductShcema,
+  updateMaterialSchema,
+  type UpdateProductSchema,
+  type UpdateMaterialSchema,
+};

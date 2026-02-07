@@ -3,8 +3,9 @@ import { Product } from "../entities/Product.js";
 // import type { IProductRepository } from "./IProductRepository.js";
 import { prisma } from "../lib/prisma.js";
 import type { UpdateProductSchema } from "../validations/schemas.js";
+import type { IProductRepository } from "./IProductRepository.js";
 
-export class ProductRepository {
+export class ProductRepository implements IProductRepository {
   async getProducts() {
     //Return of products with materials and quantity
     //Prisma select take only name, price and materials props
