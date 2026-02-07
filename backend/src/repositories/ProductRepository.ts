@@ -1,6 +1,8 @@
+import { Decimal } from "@prisma/client/runtime/client";
 import { Product } from "../entities/Product.js";
 // import type { IProductRepository } from "./IProductRepository.js";
 import { prisma } from "../lib/prisma.js";
+import type { UpdateProductSchema } from "../validations/schemas.js";
 
 export class ProductRepository {
   async getProducts() {
@@ -37,5 +39,45 @@ export class ProductRepository {
           }),
         ),
     );
+  }
+
+  async createProduct(product: Product) {
+    //This method creates a new product and a new line in ProductMaterial table
+    //It connects materials data id with the materials database id
+    return await prisma.product.create({
+      data: {
+        name: product.name,
+        price: product.price,
+        materials: {
+          create: product.materials!.map((m) => ({
+            quantity: m.quantity,
+            material: { connect: { id: m.id! } },
+          })),
+        },
+      },
+    });
+  }
+  //This method updates some prop (name, price and materials) of a product
+  //The materials logic is the same of createProduct method, if materials exist it connect new materials product id with the materials database id, but it delete all old materials before do this
+  async updateProduct(id: string, productData: UpdateProductSchema) {
+    return await prisma.product.update({
+      where: { id },
+      data: {
+        ...(productData.name && { name: productData.name }),
+        ...(productData.price && { price: Decimal(productData.price) }),
+        ...(productData.materials && {
+          materials: {
+            deleteMany: {},
+            create: productData.materials.map((m) => ({
+              quantity: m.quantity,
+              material: { connect: { id: m.id } },
+            })),
+          },
+        }),
+      },
+    });
+  }
+  async deleteProduct(id: string) {
+    return await prisma.product.delete({ where: { id } });
   }
 }

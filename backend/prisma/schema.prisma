@@ -32,7 +32,7 @@ model Material {
 
 model ProductMaterial {
  id String @id @default(uuid())
- product Product @relation(fields: [productId], references: [id])
+ product Product @relation(fields: [productId], references: [id], onDelete: Cascade)
  productId String
  material Material @relation(fields: [materialId], references: [id])
  materialId String

@@ -1,8 +1,9 @@
 import type { Decimal } from "@prisma/client/runtime/client";
 
 type MaterialWithQuantity = {
-  name: string;
-  stock: number;
+  id?: string;
+  name?: string;
+  stock?: number;
   quantity: number;
 };
 
@@ -11,5 +12,6 @@ export class Product {
     public name: string,
     public price: Decimal,
     public materials?: MaterialWithQuantity[],
+    public id?: string,
   ) {}
 }
