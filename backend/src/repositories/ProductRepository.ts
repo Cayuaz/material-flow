@@ -12,11 +12,12 @@ export class ProductRepository implements IProductRepository {
     //Materials references a respective materials necessary to make a product
     const products = await prisma.product.findMany({
       select: {
+        id: true,
         name: true,
         price: true,
         materials: {
           select: {
-            material: { select: { name: true, stock: true } },
+            material: true,
             quantity: true,
           },
         },
@@ -33,11 +34,13 @@ export class ProductRepository implements IProductRepository {
           product.price,
           product.materials.map((material) => {
             return {
+              id: material.material.id,
               name: material.material.name,
               stock: material.material.stock,
               quantity: material.quantity,
             };
           }),
+          product.id,
         ),
     );
   }
