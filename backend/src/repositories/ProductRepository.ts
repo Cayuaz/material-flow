@@ -6,8 +6,8 @@ import type { UpdateProductSchema } from "../validations/schemas.js";
 import type { IProductRepository } from "./IProductRepository.js";
 
 export class ProductRepository implements IProductRepository {
+  //This method returns all products with materials and quantity
   async getProducts() {
-    //Return of products with materials and quantity
     //Prisma select take only name, price and materials props
     //Materials references a respective materials necessary to make a product
     const products = await prisma.product.findMany({
@@ -45,8 +45,8 @@ export class ProductRepository implements IProductRepository {
     );
   }
 
+  //This method creates a new product and a new line in ProductMaterial table
   async createProduct(product: Product) {
-    //This method creates a new product and a new line in ProductMaterial table
     //It connects materials data id with the materials database id
     return await prisma.product.create({
       data: {
@@ -62,8 +62,8 @@ export class ProductRepository implements IProductRepository {
     });
   }
   //This method updates some prop (name, price and materials) of a product
-  //The materials logic is the same of createProduct method, if materials exist it connect new materials product id with the materials database id, but it delete all old materials before do this
   async updateProduct(id: string, productData: UpdateProductSchema) {
+    //The materials logic is the same of createProduct method, if materials exist it connect new materials product id with the materials database id, but it delete all old materials before do this
     return await prisma.product.update({
       where: { id },
       data: {
@@ -81,6 +81,7 @@ export class ProductRepository implements IProductRepository {
       },
     });
   }
+  //This method deletes a product
   async deleteProduct(id: string) {
     return await prisma.product.delete({ where: { id } });
   }

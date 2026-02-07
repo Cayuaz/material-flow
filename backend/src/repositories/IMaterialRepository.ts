@@ -6,7 +6,7 @@ export interface IProductRepository {
   createMaterial: (material: Material) => Promise<Material>;
   updateMaterial: (
     id: string,
-    productData: UpdateMaterialSchema,
+    materialData: UpdateMaterialSchema,
   ) => Promise<Material>;
   deleteMaterial: (id: string) => Promise<Material>;
 }
