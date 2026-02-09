@@ -3,6 +3,7 @@ import type { DeleteProductUseCase } from "../useCases/DeleteProductUseCase.js";
 import type { GetProductsUseCase } from "../useCases/GetProductsUseCase.js";
 import type { Response, Request } from "express";
 import type { UpdateProductUseCase } from "../useCases/UpdateProductUseCase.js";
+import type { SuggestedProductsUseCase } from "../useCases/SuggestedProductsUseCase.js";
 
 //Get products
 export class GetProductsController {
@@ -55,5 +56,16 @@ export class DeleteProductController {
     await this.deleteProductUsecase.execute(id);
 
     return res.status(200);
+  };
+}
+
+//Suggested products
+export class SuggestedProductsController {
+  constructor(private suggestedProductsUseCase: SuggestedProductsUseCase) {}
+
+  handle = async (req: Request, res: Response) => {
+    const result = await this.suggestedProductsUseCase.execute();
+
+    res.json(result);
   };
 }

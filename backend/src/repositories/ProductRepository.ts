@@ -85,4 +85,39 @@ export class ProductRepository implements IProductRepository {
   async deleteProduct(id: string) {
     return await prisma.product.delete({ where: { id } });
   }
+  //
+  async getProductsOrderedByPrice() {
+    const products = await prisma.product.findMany({
+      orderBy: { price: "desc" },
+      select: {
+        id: true,
+        name: true,
+        price: true,
+        materials: {
+          select: {
+            quantity: true,
+            material: { select: { id: true, name: true, stock: true } },
+          },
+        },
+      },
+    });
+
+    if (products.length === 0) return [];
+
+    //Transform products data in entities with Product class
+    return products.map(
+      (product) =>
+        new Product(
+          product.name,
+          product.price,
+          product.materials.map((m) => ({
+            id: m.material.id,
+            name: m.material.name,
+            stock: m.material.stock,
+            quantity: m.quantity,
+          })),
+          product.id,
+        ),
+    );
+  }
 }
