@@ -1,8 +1,9 @@
 import { Material } from "../entities/Material.js";
 import { prisma } from "../lib/prisma.js";
 import type { UpdateMaterialSchema } from "../validations/schemas.js";
+import type { IMaterialRepository } from "./IMaterialRepository.js";
 
-export class MaterialRepository {
+export class MaterialRepository implements IMaterialRepository {
   //This method returns all materials
   async getMaterials() {
     const materials = await prisma.material.findMany();
@@ -13,7 +14,7 @@ export class MaterialRepository {
     return materials.map((m) => new Material(m.name, m.stock, m.id));
   }
   //This method creates a new material
-  async createMaterials(material: Material) {
+  async createMaterial(material: Material) {
     return await prisma.material.create({
       data: { name: material.name, stock: material.stock },
     });

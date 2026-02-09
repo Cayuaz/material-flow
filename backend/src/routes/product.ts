@@ -30,10 +30,6 @@ const deleteProductController = new DeleteProductController(
   deleteProductUseCase,
 );
 
-//Delete product
-
-//Update product
-
 router.get("/", getProductsController.handle);
 router.post("/", createProductController.handle);
 router.delete("/", deleteProductController.handle);

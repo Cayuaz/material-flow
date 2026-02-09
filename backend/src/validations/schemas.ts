@@ -24,6 +24,7 @@ type UpdateMaterialSchema = z.infer<typeof updateMaterialSchema>;
 
 export {
   createProductSchema,
+  createMaterialShcema,
   updateProductShcema,
   updateMaterialSchema,
   type UpdateProductSchema,
