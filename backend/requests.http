@@ -54,7 +54,7 @@ Content-Type: application/json
 }
 
 ### Atualizar produto (Troque o ID)
-PUT {{baseUrl}}/products/ID_DO_PRODUTO_AQUI
+PATCH {{baseUrl}}/products/c9387803-41d3-4d22-b5e1-16474d179f80
 Content-Type: application/json
 
 {
@@ -63,4 +63,4 @@ Content-Type: application/json
 }
 
 ### Deletar produto
-DELETE {{baseUrl}}/products/ID_DO_PRODUTO_AQUI
+DELETE {{baseUrl}}/products/4bc5b609-3fa4-4d2e-a41a-db606b886085

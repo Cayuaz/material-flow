@@ -42,9 +42,15 @@ export class SuggestedProductsUseCase {
         virtualStock.set(productMaterial.id, materialStock - consumed);
       });
 
-      return { name: product.name, suggestedQuantity: maxPossible };
+      return {
+        name: product.name,
+        price: product.price,
+        suggestedQuantity: maxPossible,
+      };
     });
 
-    return suggestedProducts;
+    return suggestedProducts.filter(
+      (product) => product.suggestedQuantity !== 0,
+    );
   }
 }

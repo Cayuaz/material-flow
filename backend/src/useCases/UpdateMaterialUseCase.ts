@@ -10,9 +10,9 @@ export class UpdateMaterialUseCase {
 
     if (!success) throw new AppError("Invalid or incomplete data");
 
-    const props = Object.keys(data).length;
+    const props = data ? Object.keys(data).length : 0;
 
-    if (!props) throw new AppError("Invalid or incomplete data");
+    if (props === 0) throw new AppError("Invalid or incomplete data");
 
     await this.repository.updateMaterial(id, data);
 

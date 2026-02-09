@@ -53,8 +53,8 @@ const suggestedProductsController = new SuggestedProductsController(
 
 router.get("/", getProductsController.handle);
 router.post("/", createProductController.handle);
-router.patch("/", updateProductController.handle);
-router.delete("/", deleteProductController.handle);
+router.patch("/:id", updateProductController.handle);
+router.delete("/:id", deleteProductController.handle);
 router.get("/suggestion", suggestedProductsController.handle);
 
 export default router;

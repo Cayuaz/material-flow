@@ -23,7 +23,7 @@ export class CreateProductController {
   handle = async (req: Request, res: Response) => {
     await this.createProductUseCase.execute(req.body);
 
-    res.status(201);
+    res.status(201).json({ message: "Product created successfully." });
   };
 }
 
@@ -39,7 +39,7 @@ export class UpdateProductController {
 
     await this.updateProductUseCase.execute(id, req.body);
 
-    return res.status(200);
+    return res.status(200).json({ message: "Product updated successfully." });
   };
 }
 
@@ -55,7 +55,7 @@ export class DeleteProductController {
 
     await this.deleteProductUsecase.execute(id);
 
-    return res.status(200);
+    return res.status(200).json({ message: "Product deleted successfully." });
   };
 }
 
