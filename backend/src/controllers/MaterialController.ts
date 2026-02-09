@@ -22,7 +22,7 @@ export class CreateMaterialController {
   handle = async (req: Request, res: Response) => {
     await this.createMaterialUseCase.execute(req.body);
 
-    return res.status(201);
+    return res.status(201).json({ message: "Material created successfully." });
   };
 }
 
@@ -38,7 +38,7 @@ export class UpdateMaterialController {
 
     await this.updateMaterialUseCase.execute(id, req.body);
 
-    return res.status(200);
+    return res.status(200).json({ message: "Material updated successfully." });
   };
 }
 
@@ -54,6 +54,6 @@ export class DeleteMaterialController {
 
     await this.deleteMaterialUseCase.execute(id);
 
-    return res.status(200);
+    return res.status(200).json({ message: "Material deleted successfully." });
   };
 }

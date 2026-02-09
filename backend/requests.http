@@ -1,6 +1,6 @@
 @baseUrl = http://localhost:3000
 
-### Obter Sugestão de Produtos para serem feitos
+### Sugestão de Produtos para serem feitos
 GET {{baseUrl}}/products/suggestion
 
 
@@ -19,15 +19,15 @@ Content-Type: application/json
 }
 
 ### Atualizar material 
-PUT {{baseUrl}}/materials/ID_DO_MATERIAL_AQUI
+PATCH {{baseUrl}}/materials/83a2f50d-23d4-41ed-9418-dad4925f787b
 Content-Type: application/json
 
 {
-  "stock": 150.0
+  "stock": 200.0
 }
 
 ### Deletar material
-DELETE {{baseUrl}}/materials/b5572275-9988-4200-87a0-049f91a7734e
+DELETE {{baseUrl}}/materials/14d33e88-b4a2-4ce0-a891-62391d8c182c
 
 # PRODUCTS CRUD
 
