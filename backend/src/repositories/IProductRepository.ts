@@ -9,4 +9,5 @@ export interface IProductRepository {
     productData: UpdateProductSchema,
   ) => Promise<Product>;
   deleteProduct: (id: string) => Promise<Product>;
+  getProductsOrderedByPrice: () => Promise<Product[]>;
 }

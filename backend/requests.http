@@ -1,1 +1,66 @@
-GET http://localhost:3000/products
+@baseUrl = http://localhost:3000
+
+### Obter Sugestão de Produtos para serem feitos
+GET {{baseUrl}}/products/suggestion
+
+
+# MATERIALS CRUD
+
+### Listar todos os materiais
+GET {{baseUrl}}/materials
+
+### Criar um novo material (Ex: Couro Sintético)
+POST {{baseUrl}}/materials
+Content-Type: application/json
+
+{
+  "name": "Couro Sintético Premium (m)",
+  "stock": 50.0
+}
+
+### Atualizar material 
+PUT {{baseUrl}}/materials/ID_DO_MATERIAL_AQUI
+Content-Type: application/json
+
+{
+  "stock": 150.0
+}
+
+### Deletar material
+DELETE {{baseUrl}}/materials/b5572275-9988-4200-87a0-049f91a7734e
+
+# PRODUCTS CRUD
+
+### Listar todos os produtos
+GET {{baseUrl}}/products
+
+### Criar um novo produto 
+POST {{baseUrl}}/products
+Content-Type: application/json
+
+{
+  "name": "Bone Streetwear Limited Edition",
+  "price": 85.90,
+  "materials": [
+    {
+      "id": "58189e23-6aeb-41ea-960f-438a08384801", 
+      "quantity": 0.3
+    },
+    {
+      "id": "2e8c117f-6c42-47a9-a2c9-a0bef470dbee", 
+      "quantity": 1.0
+    }
+  ]
+}
+
+### Atualizar produto (Troque o ID)
+PUT {{baseUrl}}/products/ID_DO_PRODUTO_AQUI
+Content-Type: application/json
+
+{
+  "price": 99.90,
+  "name": "Bone Streetwear (Re-stock)"
+}
+
+### Deletar produto
+DELETE {{baseUrl}}/products/ID_DO_PRODUTO_AQUI

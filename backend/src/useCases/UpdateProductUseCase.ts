@@ -10,6 +10,10 @@ export class UpdateProductUseCase {
 
     if (!success) throw new AppError("Invalid or incomplete data");
 
+    const props = Object.keys(data).length;
+
+    if (!props) throw new AppError("Invalid or incomplete data");
+
     await this.repository.updateProduct(id, data);
 
     return true;
