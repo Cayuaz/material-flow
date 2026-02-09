@@ -40,7 +40,7 @@ const deleteMaterialController = new DeleteMaterialController(
 
 router.get("/", getMaterialsController.handle);
 router.post("/", createMaterialController.handle);
-router.patch("/", updateMaterialController.handle);
-router.delete("/", deleteMaterialController.handle);
+router.patch("/:id", updateMaterialController.handle);
+router.delete("/:id", deleteMaterialController.handle);
 
 export default router;

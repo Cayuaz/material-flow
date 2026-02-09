@@ -11,7 +11,7 @@ export class GetMaterialsController {
   handle = async (req: Request, res: Response) => {
     const result = await this.getMaterialsUseCase.execute();
 
-    res.json(result);
+    return res.json(result);
   };
 }
 
@@ -22,7 +22,7 @@ export class CreateMaterialController {
   handle = async (req: Request, res: Response) => {
     await this.createMaterialUseCase.execute(req.body);
 
-    res.status(201);
+    return res.status(201);
   };
 }
 
