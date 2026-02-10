@@ -19,9 +19,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body className={`${lato.className} antialiased`}>
+      <body
+        className={`${lato.className} antialiased grid grid-cols-1 grid-rows-[auto_2fr_auto]  min-h-screen`}
+      >
         <Header />
-        {children}
+        <main> {children}</main>
         <Footer />
       </body>
     </html>
