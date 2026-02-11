@@ -2,28 +2,28 @@
 
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Resolver } from "react-hook-form";
-import { useEffect, useState } from "react";
 import ErrorForm from "../ErrorForm";
 import { MaterialSelectorField } from "./MaterialSelectorField";
-import { MaterialService } from "@/services/materialService";
 import {
-  type MaterialArraySchema,
   ProductFormValidation,
   productFormValidation,
 } from "@/validations/schemas";
 import { CreateProductService } from "@/services/createProductService";
+import { useState } from "react";
 
 const CreateProductForm = () => {
   const {
     register,
     control,
     handleSubmit,
-    formState: { errors },
-  } = useForm({
-    resolver: zodResolver(
-      productFormValidation,
-    ) as unknown as Resolver<ProductFormValidation>,
+    formState: { isSubmitting, errors },
+  } = useForm<ProductFormValidation>({
+    resolver: zodResolver(productFormValidation),
+    defaultValues: {
+      name: "",
+      price: 0,
+      materials: [],
+    },
   });
 
   const [response, setResponse] = useState("");
@@ -37,18 +37,6 @@ const CreateProductForm = () => {
       setResponse("notOkay");
     }
   };
-
-  const [availableMaterials, setAvailableMaterials] =
-    useState<MaterialArraySchema>([]);
-
-  useEffect(() => {
-    const fetchMaterials = async () => {
-      const data = await MaterialService();
-      setAvailableMaterials(data);
-      console.log(data);
-    };
-    fetchMaterials();
-  }, []);
 
   return (
     <>
@@ -83,8 +71,8 @@ const CreateProductForm = () => {
             Price
           </label>
           <input
-            type="string"
-            {...register("price")}
+            type="number"
+            {...register("price", { valueAsNumber: true })}
             placeholder="R$100.00"
             className="bg-zinc-900/50 border border-zinc-800 text-white p-3 rounded-lg outline-none focus:border-zinc-600 transition-all placeholder:text-zinc-700"
           />
@@ -95,21 +83,14 @@ const CreateProductForm = () => {
           )}
         </div>
 
-        {availableMaterials.length > 0 && (
-          <MaterialSelectorField
-            control={control}
-            register={register}
-            errors={errors}
-            availableMaterials={availableMaterials}
-          />
-        )}
+        <MaterialSelectorField control={control} errors={errors} />
 
         {/* Botão de Envio */}
         <button
           type="submit"
           className="mt-4 bg-white text-black font-bold py-3 rounded-lg hover:bg-zinc-200 transition-colors uppercase text-sm tracking-widest"
         >
-          Save Material
+          {!isSubmitting ? "Save Material" : "Loading..."}
         </button>
       </form>
       {response === "ok" && (

@@ -40,12 +40,12 @@ const materialFormValidation = z.object({
 
 const productFormValidation = z.object({
   name: z.string().min(1),
-  price: z.coerce.number().min(0.01),
+  price: z.number().min(0.01),
   materials: z
     .array(
       z.object({
         materialId: z.string().min(1),
-        quantity: z.coerce.number().min(1),
+        quantity: z.number().min(1),
       }),
     )
     .min(1),
