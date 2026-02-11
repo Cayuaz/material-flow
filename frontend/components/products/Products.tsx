@@ -1,10 +1,10 @@
 import { formPrice } from "@/lib/utils";
-import { productsService } from "@/services/productsService";
+import { productService } from "@/services/productService";
 import { Edit, Trash2 } from "lucide-react"; // Trash2 costuma ser mais moderno
 import ErrorGetData from "../Error";
 
 const Products = async () => {
-  const products = await productsService();
+  const products = await productService();
 
   return (
     <>

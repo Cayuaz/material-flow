@@ -1,6 +1,6 @@
 import { Skeleton } from "@/components/ui/skeleton";
 
-export default function SkeletonProducts() {
+export default function MainSkeleton() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:w-4/5 gap-8 px-10 mx-auto my-4">
       {Array.from({ length: 6 }).map((_, i) => (
