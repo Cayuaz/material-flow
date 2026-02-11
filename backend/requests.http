@@ -43,11 +43,11 @@ Content-Type: application/json
   "price": 85.90,
   "materials": [
     {
-      "id": "58189e23-6aeb-41ea-960f-438a08384801", 
+      "materialId": "58189e23-6aeb-41ea-960f-438a08384801", 
       "quantity": 0.3
     },
     {
-      "id": "2e8c117f-6c42-47a9-a2c9-a0bef470dbee", 
+      "materialId": "2e8c117f-6c42-47a9-a2c9-a0bef470dbee", 
       "quantity": 1.0
     }
   ]

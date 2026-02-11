@@ -2,7 +2,10 @@ import { Decimal } from "@prisma/client/runtime/client";
 import { Product } from "../entities/Product.js";
 // import type { IProductRepository } from "./IProductRepository.js";
 import { prisma } from "../lib/prisma.js";
-import type { UpdateProductSchema } from "../validations/schemas.js";
+import type {
+  CreateProductSchema,
+  UpdateProductSchema,
+} from "../validations/schemas.js";
 import type { IProductRepository } from "./IProductRepository.js";
 
 export class ProductRepository implements IProductRepository {
@@ -46,7 +49,7 @@ export class ProductRepository implements IProductRepository {
   }
 
   //This method creates a new product and a new line in ProductMaterial table
-  async createProduct(product: Product) {
+  async createProduct(product: CreateProductSchema) {
     //It connects materials data id with the materials database id
     return await prisma.product.create({
       data: {
@@ -55,7 +58,7 @@ export class ProductRepository implements IProductRepository {
         materials: {
           create: product.materials!.map((m) => ({
             quantity: m.quantity,
-            material: { connect: { id: m.id! } },
+            material: { connect: { id: m.materialId! } },
           })),
         },
       },
@@ -74,7 +77,7 @@ export class ProductRepository implements IProductRepository {
             deleteMany: {},
             create: productData.materials.map((m) => ({
               quantity: m.quantity,
-              material: { connect: { id: m.id } },
+              material: { connect: { id: m.materialId } },
             })),
           },
         }),
