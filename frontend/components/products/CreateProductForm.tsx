@@ -92,7 +92,7 @@ const CreateProductForm = () => {
           type="submit"
           className="mt-4 bg-white text-black font-bold py-3 rounded-lg hover:bg-zinc-200 transition-colors uppercase text-sm tracking-widest"
         >
-          {!isSubmitting ? "Save Material" : "Loading..."}
+          {isSubmitting ? "Saving Product..." : "Save Product"}
         </button>
       </form>
       {/* Feedback Toasts */}
