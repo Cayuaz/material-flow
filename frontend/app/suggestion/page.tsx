@@ -8,6 +8,11 @@ export default async function ProductsRoute() {
       <h1 className="text-center text-white text-xl my-10 ">
         Suggested products to manufacture
       </h1>
+      <p className="text-justify text-zinc-400 text-base w-4/5 mx-auto px-10 ">
+        Based on the current product inventory, these are the suggested products
+        to be produced, taking into account the most expensive products to the
+        cheapest until the inventory is depleted.
+      </p>
       <Suspense fallback={<MainSkeleton />}>
         <Suggestion />
       </Suspense>

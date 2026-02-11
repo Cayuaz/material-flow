@@ -8,7 +8,7 @@ const Suggestion = async () => {
 
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:w-4/5 gap-8 px-10 mx-auto my-4 font-lato">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:w-4/5 gap-8 px-10 mx-auto my-8 font-lato">
         {suggestedProducts.length > 0 &&
           suggestedProducts.map((product) => (
             <div
@@ -22,30 +22,33 @@ const Suggestion = async () => {
                 </h2>
                 <span className="text-sm font-semibold text-zinc-400">
                   {formPrice(Number(product.price))}
+                  <span className="ml-1">(un)</span>
                 </span>
               </div>
 
               {/* Separator */}
               <div className="h-px w-full bg-zinc-800" />
 
-              <span className="text-sm font-semibold text-zinc-400">
-                Quantity suggested: {product.suggestedQuantity}
-              </span>
+              <div className="flex justify-between items-center">
+                <span className="text-sm font-semibold text-zinc-400">
+                  Suggested quantity: {product.suggestedQuantity}
+                </span>
 
-              {/* Delete and Edit */}
-              <div className="flex items-center gap-4 self-end pt-2 opacity-0 transition-opacity group-hover:opacity-100">
-                <button
-                  title="Excluir"
-                  className="text-zinc-500 transition-colors hover:text-red-400"
-                >
-                  <Trash2 size={18} />
-                </button>
-                <button
-                  title="Editar"
-                  className="text-zinc-500 transition-colors hover:text-white"
-                >
-                  <Edit size={18} />
-                </button>
+                {/* Delete and Edit */}
+                <div className="flex items-center gap-4 self-end pt-2 opacity-0 transition-opacity group-hover:opacity-100">
+                  <button
+                    title="Excluir"
+                    className="text-zinc-500 transition-colors hover:text-red-400"
+                  >
+                    <Trash2 size={18} />
+                  </button>
+                  <button
+                    title="Editar"
+                    className="text-zinc-500 transition-colors hover:text-white"
+                  >
+                    <Edit size={18} />
+                  </button>
+                </div>
               </div>
             </div>
           ))}
