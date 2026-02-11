@@ -50,7 +50,7 @@ const Register = () => {
           </DropdownMenuItem>
           <DropdownMenuItem>
             <Link
-              href={"/material/register"}
+              href={"/materials/register"}
               className="hover:font-semibold transition-colors text-white "
             >
               Material

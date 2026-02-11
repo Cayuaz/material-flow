@@ -5,7 +5,7 @@ import { Suspense } from "react";
 export default async function ProductsRoute() {
   return (
     <div>
-      <h1 className="text-center text-white text-xl my-10 ">
+      <h1 className="text-center text-white text-xl my-10">
         Suggested products to manufacture
       </h1>
       <p className="text-justify text-zinc-400 text-base w-4/5 mx-auto px-10 ">

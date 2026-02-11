@@ -33,4 +33,17 @@ const productArrayShema = z.array(productSchema);
 
 const suggestedArraySchema = z.array(suggestedProductSchema);
 
-export { productArrayShema, MaterialArrayShema, suggestedArraySchema };
+const materialFormValidation = z.object({
+  name: z.string().min(1),
+  stock: z.coerce.number().min(1),
+});
+
+type MaterialFormValidation = z.infer<typeof materialFormValidation>;
+
+export {
+  productArrayShema,
+  MaterialArrayShema,
+  suggestedArraySchema,
+  materialFormValidation,
+  type MaterialFormValidation,
+};
