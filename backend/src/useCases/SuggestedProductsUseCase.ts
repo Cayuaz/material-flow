@@ -43,6 +43,7 @@ export class SuggestedProductsUseCase {
       });
 
       return {
+        id: product.id,
         name: product.name,
         price: product.price,
         suggestedQuantity: maxPossible,
