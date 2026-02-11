@@ -1,5 +1,6 @@
 import MainSkeleton from "@/components/MainSkeleton";
 import Materials from "@/components/materials/Materials";
+import UpdateMaterial from "@/components/materials/UpdateMaterial";
 import { Suspense } from "react";
 
 export default async function MaterialsRoute() {
@@ -11,6 +12,7 @@ export default async function MaterialsRoute() {
       <Suspense fallback={<MainSkeleton />}>
         <Materials />
       </Suspense>
+      <UpdateMaterial />
     </div>
   );
 }

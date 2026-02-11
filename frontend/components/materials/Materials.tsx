@@ -1,6 +1,6 @@
-import { Edit, Trash2 } from "lucide-react"; // Trash2 costuma ser mais moderno
 import ErrorGetData from "../Error";
 import { MaterialService } from "@/services/materialService";
+import { EditAndTrash } from "../EditAndTrash";
 
 const Materials = async () => {
   const materials = await MaterialService();
@@ -25,20 +25,12 @@ const Materials = async () => {
               </div>
 
               {/* Delete and Edit */}
-              <div className="flex items-center gap-2 self-end pt-2 opacity-0 transition-opacity group-hover:opacity-100">
-                <button
-                  title="Excluir"
-                  className="text-zinc-500 transition-colors hover:text-red-400"
-                >
-                  <Trash2 size={18} />
-                </button>
-                <button
-                  title="Editar"
-                  className="text-zinc-500 transition-colors hover:text-white"
-                >
-                  <Edit size={18} />
-                </button>
-              </div>
+              <EditAndTrash
+                id={material.id}
+                name={material.name}
+                stock={material.stock}
+                ProductOrMaterial="material"
+              />
             </div>
           ))}
       </div>

@@ -14,6 +14,12 @@ const productSchema = z.object({
   materials: z.array(materialsProductSchema),
 });
 
+const productStoreSchema = z.object({
+  id: z.string(),
+  name: z.string(),
+  price: z.number(),
+});
+
 const MaterialSchema = z.object({
   id: z.string(),
   name: z.string(),
@@ -38,22 +44,68 @@ const materialFormValidation = z.object({
   stock: z.coerce.number().min(1),
 });
 
+const createMaterialSchema = z.object({
+  materialId: z.string().min(1),
+  quantity: z.number().min(1),
+});
+
 const productFormValidation = z.object({
   name: z.string().min(1),
   price: z.number().min(0.01),
-  materials: z
-    .array(
-      z.object({
-        materialId: z.string().min(1),
-        quantity: z.number().min(1),
-      }),
-    )
-    .min(1),
+  materials: z.array(createMaterialSchema).min(1),
 });
+const updateProductFormValidation = z
+  .object({
+    name: z.string().optional(),
+    price: z.number().optional(),
+
+    materials: z.array(createMaterialSchema).optional(),
+  })
+  .refine(
+    (data) => {
+      const hasName = data.name !== undefined && data.name.trim() !== "";
+      const hasPrice = data.price !== undefined;
+
+      const hasMaterials =
+        data.materials !== undefined && data.materials.length > 0;
+
+      return hasName || hasPrice || hasMaterials;
+    },
+    {
+      message: "You must update at least one field to save.",
+      path: ["root"],
+    },
+  );
+
+const updateMaterialFormValidation = z
+  .object({
+    name: z.string().optional(),
+    stock: z.number().optional(),
+  })
+  .refine(
+    (data) => {
+      const hasName = data.name !== undefined && data.name.trim() !== "";
+      const hasPrice = data.stock !== undefined;
+
+      return hasName || hasPrice;
+    },
+    {
+      message: "You must update at least one field to save.",
+      path: ["root"],
+    },
+  );
+
+type UpdateProductFormValidation = z.infer<typeof updateProductFormValidation>;
+type UpdateMaterialFormValidation = z.infer<
+  typeof updateMaterialFormValidation
+>;
 
 type MaterialFormValidation = z.infer<typeof materialFormValidation>;
 type ProductFormValidation = z.infer<typeof productFormValidation>;
 type MaterialArraySchema = z.infer<typeof materialArrayShema>;
+
+type ProductStoreSchema = z.infer<typeof productStoreSchema>;
+type MaterialStoreSchema = z.infer<typeof MaterialSchema>;
 
 export {
   productArrayShema,
@@ -61,7 +113,14 @@ export {
   suggestedArraySchema,
   materialFormValidation,
   productFormValidation,
+  updateMaterialFormValidation,
+  updateProductFormValidation,
+  productStoreSchema,
   type MaterialFormValidation,
   type ProductFormValidation,
   type MaterialArraySchema,
+  type UpdateProductFormValidation,
+  type UpdateMaterialFormValidation,
+  type ProductStoreSchema,
+  type MaterialStoreSchema,
 };
