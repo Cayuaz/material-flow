@@ -20,8 +20,16 @@ const MaterialSchema = z.object({
   stock: z.number(),
 });
 
+const suggestedProductSchema = z.object({
+  name: z.string(),
+  price: z.string(),
+  suggestedQuantity: z.number(),
+});
+
 const MaterialArrayShema = z.array(MaterialSchema);
 
 const productArrayShema = z.array(productSchema);
 
-export { productArrayShema, MaterialArrayShema };
+const suggestedArraySchema = z.array(suggestedProductSchema);
+
+export { productArrayShema, MaterialArrayShema, suggestedArraySchema };
