@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "@/components/header/Header";
 import Footer from "@/components/Footer";
 import localFont from "next/font/local";
+import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
   title: "Material Flow",
@@ -24,6 +25,7 @@ export default function RootLayout({
       >
         <Header />
         <main> {children}</main>
+        <Toaster theme="dark" />
         <Footer />
       </body>
     </html>
