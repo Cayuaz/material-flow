@@ -27,7 +27,7 @@ const suggestedProductSchema = z.object({
   suggestedQuantity: z.number(),
 });
 
-const MaterialArrayShema = z.array(MaterialSchema);
+const materialArrayShema = z.array(MaterialSchema);
 
 const productArrayShema = z.array(productSchema);
 
@@ -38,12 +38,30 @@ const materialFormValidation = z.object({
   stock: z.coerce.number().min(1),
 });
 
+const productFormValidation = z.object({
+  name: z.string().min(1),
+  price: z.coerce.number().min(0.01),
+  materials: z
+    .array(
+      z.object({
+        materialId: z.string().min(1),
+        quantity: z.coerce.number().min(1),
+      }),
+    )
+    .min(1),
+});
+
 type MaterialFormValidation = z.infer<typeof materialFormValidation>;
+type ProductFormValidation = z.infer<typeof productFormValidation>;
+type MaterialArraySchema = z.infer<typeof materialArrayShema>;
 
 export {
   productArrayShema,
-  MaterialArrayShema,
+  materialArrayShema,
   suggestedArraySchema,
   materialFormValidation,
+  productFormValidation,
   type MaterialFormValidation,
+  type ProductFormValidation,
+  type MaterialArraySchema,
 };
