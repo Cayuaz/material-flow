@@ -1,20 +1,31 @@
-"use client"; // 👈 OBRIGATÓRIO para usar hooks
+"use client";
 
 import { Edit, Trash2 } from "lucide-react";
 import { useAddProductId } from "@/hooks/useAddProductId"; // Ajuste o caminho
+import { useAddMaterialId } from "@/hooks/useAddMaterialId";
 
-interface ProductActionsProps {
-  productId: string;
+interface EditAndTrashProps {
+  id: string;
+  name: string;
+  price?: number;
+  stock?: number;
+  ProductOrMaterial: string;
 }
 
-export const ProductActions = ({ productId }: ProductActionsProps) => {
-  // Chamamos o hook passando o ID deste produto específico
-  const setProductId = useAddProductId(productId);
+export const EditAndTrash = ({
+  id,
+  name,
+  price,
+  stock,
+  ProductOrMaterial,
+}: EditAndTrashProps) => {
+  const setProductId = useAddProductId(id, name, price!);
+  const setMaterialId = useAddMaterialId(id, name, stock!);
 
   return (
     <div className="flex items-center gap-4 self-end pt-2 opacity-0 transition-opacity group-hover:opacity-100">
       <button
-        onClick={setProductId} // Ao clicar, joga o ID no Zustand
+        onClick={ProductOrMaterial === "product" ? setProductId : setMaterialId}
         title="Excluir"
         className="text-zinc-500 transition-colors hover:text-red-400"
       >
@@ -22,7 +33,7 @@ export const ProductActions = ({ productId }: ProductActionsProps) => {
       </button>
 
       <button
-        onClick={setProductId} // Ajuste aqui se a lógica de editar for diferente
+        onClick={ProductOrMaterial === "product" ? setProductId : setMaterialId}
         title="Editar"
         className="text-zinc-500 transition-colors hover:text-white"
       >

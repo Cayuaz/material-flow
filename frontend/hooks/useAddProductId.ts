@@ -2,11 +2,11 @@
 
 import { useProductStore } from "@/stores/useProductStore";
 
-export const useAddProductId = (id: string) => {
-  const { setProductId } = useProductStore();
+export const useAddProductId = (id: string, name: string, price: number) => {
+  const { setProduct } = useProductStore();
 
   const execute = () => {
-    setProductId(id);
+    setProduct({ id, name, price });
   };
 
   return execute;

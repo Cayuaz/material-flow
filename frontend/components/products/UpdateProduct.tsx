@@ -4,9 +4,9 @@ import { useProductStore } from "@/stores/useProductStore";
 import UpdateProductForm from "./UpdateProductForm";
 
 const UpdateProduct = () => {
-  const { productId } = useProductStore();
+  const { product } = useProductStore();
 
-  return <>{productId && <UpdateProductForm />}</>;
+  return <>{product && <UpdateProductForm />}</>;
 };
 
 export default UpdateProduct;

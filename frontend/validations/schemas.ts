@@ -14,6 +14,12 @@ const productSchema = z.object({
   materials: z.array(materialsProductSchema),
 });
 
+const productStoreSchema = z.object({
+  id: z.string(),
+  name: z.string(),
+  price: z.number(),
+});
+
 const MaterialSchema = z.object({
   id: z.string(),
   name: z.string(),
@@ -50,23 +56,16 @@ const productFormValidation = z.object({
 });
 const updateProductFormValidation = z
   .object({
-    // Redefina os campos como opcionais explicitamente para ter controle total
     name: z.string().optional(),
-    price: z.number().min(0.01).optional(),
+    price: z.number().optional(),
 
-    // Aqui está o pulo do gato: Permite array vazio ou undefined no início,
-    // mas se tiver dados, valida o conteúdo.
     materials: z.array(createMaterialSchema).optional(),
   })
   .refine(
     (data) => {
-      // Sua lógica de "pelo menos um" continua válida aqui
       const hasName = data.name !== undefined && data.name.trim() !== "";
       const hasPrice = data.price !== undefined;
 
-      // Verifique se materials existe E se tem itens (se essa for a regra de negócio para update)
-      // Se a regra for "pode enviar lista vazia para limpar", ajuste a lógica.
-      // Assumindo que update de materiais é substituir a lista:
       const hasMaterials =
         data.materials !== undefined && data.materials.length > 0;
 
@@ -78,11 +77,35 @@ const updateProductFormValidation = z
     },
   );
 
+const updateMaterialFormValidation = z
+  .object({
+    name: z.string().optional(),
+    stock: z.number().optional(),
+  })
+  .refine(
+    (data) => {
+      const hasName = data.name !== undefined && data.name.trim() !== "";
+      const hasPrice = data.stock !== undefined;
+
+      return hasName || hasPrice;
+    },
+    {
+      message: "You must update at least one field to save.",
+      path: ["root"],
+    },
+  );
+
 type UpdateProductFormValidation = z.infer<typeof updateProductFormValidation>;
+type UpdateMaterialFormValidation = z.infer<
+  typeof updateMaterialFormValidation
+>;
 
 type MaterialFormValidation = z.infer<typeof materialFormValidation>;
 type ProductFormValidation = z.infer<typeof productFormValidation>;
 type MaterialArraySchema = z.infer<typeof materialArrayShema>;
+
+type ProductStoreSchema = z.infer<typeof productStoreSchema>;
+type MaterialStoreSchema = z.infer<typeof MaterialSchema>;
 
 export {
   productArrayShema,
@@ -90,9 +113,14 @@ export {
   suggestedArraySchema,
   materialFormValidation,
   productFormValidation,
+  updateMaterialFormValidation,
   updateProductFormValidation,
+  productStoreSchema,
   type MaterialFormValidation,
   type ProductFormValidation,
   type MaterialArraySchema,
   type UpdateProductFormValidation,
+  type UpdateMaterialFormValidation,
+  type ProductStoreSchema,
+  type MaterialStoreSchema,
 };

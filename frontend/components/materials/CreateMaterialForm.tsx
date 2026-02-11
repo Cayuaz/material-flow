@@ -41,7 +41,7 @@ const CreateMaterialForm = () => {
           Register New Material
         </h2>
 
-        {/* Campo: Name */}
+        {/* Name */}
         <div className="flex flex-col gap-2 w-full">
           <label className="text-zinc-500 text-xs font-bold uppercase tracking-wider">
             Material Name
@@ -58,7 +58,7 @@ const CreateMaterialForm = () => {
           )}
         </div>
 
-        {/* Campo: Stock */}
+        {/* Stock */}
         <div className="flex flex-col gap-2 w-full">
           <label className="text-zinc-500 text-xs font-bold uppercase tracking-wider">
             Initial Stock
@@ -76,7 +76,7 @@ const CreateMaterialForm = () => {
           )}
         </div>
 
-        {/* Botão de Envio */}
+        {/* Send Button*/}
         <button
           type="submit"
           className="mt-4 bg-white text-black font-bold py-3 rounded-lg hover:bg-zinc-200 transition-colors uppercase text-sm tracking-widest"
@@ -84,6 +84,7 @@ const CreateMaterialForm = () => {
           Save Material
         </button>
       </form>
+      {/* Feedback toasts */}
       {response === "ok" && (
         <ErrorForm
           message="

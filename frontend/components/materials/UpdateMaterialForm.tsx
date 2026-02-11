@@ -3,37 +3,35 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import ErrorForm from "../ErrorForm";
-import { UpdateMaterialSelectorField } from "./UpdateMaterialSelectorField";
 import {
-  updateProductFormValidation,
-  UpdateProductFormValidation,
+  updateMaterialFormValidation,
+  UpdateMaterialFormValidation,
 } from "@/validations/schemas";
 
 import { useState } from "react";
 import { X } from "lucide-react";
-import { useProductStore } from "@/stores/useProductStore";
-import { UpdateProductService } from "@/services/UpdateProductService";
 
-const UpdateProductForm = () => {
-  const { product, setProduct } = useProductStore();
+import { useMaterialStore } from "@/stores/useMaterialStore";
+import { UpdateMaterialService } from "@/services/UpdateMaterialService";
+
+const UpdateMaterialForm = () => {
+  const { material, setMaterial } = useMaterialStore();
   const [response, setResponse] = useState("");
 
   const {
     register,
-    control,
     handleSubmit,
     formState: { isSubmitting, errors },
-  } = useForm<UpdateProductFormValidation>({
-    resolver: zodResolver(updateProductFormValidation),
+  } = useForm<UpdateMaterialFormValidation>({
+    resolver: zodResolver(updateMaterialFormValidation),
     defaultValues: {
-      name: product!.name,
-      price: product!.price,
-      materials: [],
+      name: material!.name,
+      stock: material!.stock,
     },
   });
 
-  const onSubmit = async (data: UpdateProductFormValidation) => {
-    const result = await UpdateProductService(product!.id, data);
+  const onSubmit = async (data: UpdateMaterialFormValidation) => {
+    const result = await UpdateMaterialService(material!.id, data);
 
     if (result) {
       setResponse("ok");
@@ -55,7 +53,7 @@ const UpdateProductForm = () => {
             {/*Close button */}
             <button
               type="button"
-              onClick={() => setProduct(null)}
+              onClick={() => setMaterial(null)}
               className="text-zinc-500 hover:text-white transition-colors p-1 rounded-md hover:bg-zinc-800"
             >
               <X size={24} />
@@ -65,7 +63,7 @@ const UpdateProductForm = () => {
           {/* Name */}
           <div className="flex flex-col gap-2 w-full">
             <label className="text-zinc-500 text-xs font-bold uppercase tracking-wider">
-              Product Name
+              Material Name
             </label>
             <input
               {...register("name")}
@@ -79,30 +77,24 @@ const UpdateProductForm = () => {
             )}
           </div>
 
-          {/* Price */}
+          {/* Stock */}
           <div className="flex flex-col gap-2 w-full">
             <label className="text-zinc-500 text-xs font-bold uppercase tracking-wider">
               Price
             </label>
             <input
               type="number"
-              step="00.1"
-              {...register("price", { valueAsNumber: true })}
-              placeholder="0.00"
+              {...register("stock", { valueAsNumber: true })}
+              placeholder="0"
               className="bg-zinc-900/50 border border-zinc-800 text-white p-3 rounded-lg outline-none focus:border-zinc-600 transition-all placeholder:text-zinc-700"
             />
-            {errors.price && (
+            {errors.stock && (
               <span className="text-red-400 text-xs italic">
-                {errors.price.message}
+                {errors.stock.message}
               </span>
             )}
           </div>
 
-          {/* Seletor de Materiais */}
-          {/* Passei 'register' e 'availableMaterials' pois o componente filho pode precisar, ajuste conforme a props dele */}
-          <UpdateMaterialSelectorField control={control} errors={errors} />
-
-          {/* Botão de Salvar */}
           <button
             type="submit"
             disabled={isSubmitting}
@@ -112,7 +104,7 @@ const UpdateProductForm = () => {
           </button>
         </form>
 
-        {/* Toasts de Feedback (Posicionados Absolute ou Fixed dentro do Overlay) */}
+        {/* Feedback toasts */}
         {response === "ok" && (
           <div className="absolute bottom-4 left-0 right-0 flex justify-center">
             <ErrorForm
@@ -136,4 +128,4 @@ const UpdateProductForm = () => {
   );
 };
 
-export default UpdateProductForm;
+export default UpdateMaterialForm;

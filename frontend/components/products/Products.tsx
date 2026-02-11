@@ -1,7 +1,7 @@
 import { formPrice } from "@/lib/utils";
 import { productService } from "@/services/productService";
 import ErrorGetData from "../Error";
-import { ProductActions } from "./ProductActions";
+import { EditAndTrash } from "../EditAndTrash";
 
 const Products = async () => {
   const products = await productService();
@@ -47,7 +47,12 @@ const Products = async () => {
               </div>
 
               {/* Delete and Edit */}
-              <ProductActions productId={product.id} />
+              <EditAndTrash
+                id={product.id}
+                name={product.name}
+                price={Number(product.price)}
+                ProductOrMaterial="product"
+              />
             </div>
           ))}
       </div>
