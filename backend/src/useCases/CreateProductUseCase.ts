@@ -1,4 +1,3 @@
-import { Decimal } from "@prisma/client/runtime/client";
 import { AppError } from "../middlewares/error.js";
 import type { IProductRepository } from "../repositories/IProductRepository.js";
 import { createProductSchema } from "../validations/schemas.js";
@@ -13,7 +12,7 @@ export class CreateProductUseCase {
 
     const product = {
       name: data.name,
-      price: Decimal(data.price),
+      price: data.price,
       materials: data.materials,
     };
 

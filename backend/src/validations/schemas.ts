@@ -1,7 +1,7 @@
 import z from "zod";
 
 const materialSchema = z.object({
-  id: z.string(),
+  materialId: z.string(),
   quantity: z.number(),
 });
 
@@ -21,6 +21,7 @@ const updateMaterialSchema = createMaterialShcema.partial();
 
 type UpdateProductSchema = z.infer<typeof updateProductShcema>;
 type UpdateMaterialSchema = z.infer<typeof updateMaterialSchema>;
+type CreateProductSchema = z.infer<typeof createProductSchema>;
 
 export {
   createProductSchema,
@@ -29,4 +30,5 @@ export {
   updateMaterialSchema,
   type UpdateProductSchema,
   type UpdateMaterialSchema,
+  type CreateProductSchema,
 };
