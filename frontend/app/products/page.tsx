@@ -1,6 +1,7 @@
 import Products from "@/components/products/Products";
 import MainSkeleton from "@/components/MainSkeleton";
 import { Suspense } from "react";
+import UpdateProduct from "@/components/products/UpdateProduct";
 
 export default async function ProductsRoute() {
   return (
@@ -11,6 +12,7 @@ export default async function ProductsRoute() {
       <Suspense fallback={<MainSkeleton />}>
         <Products />
       </Suspense>
+      <UpdateProduct />
     </div>
   );
 }

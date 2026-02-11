@@ -1,7 +1,7 @@
 import { formPrice } from "@/lib/utils";
 import { productService } from "@/services/productService";
-import { Edit, Trash2 } from "lucide-react"; // Trash2 costuma ser mais moderno
 import ErrorGetData from "../Error";
+import { ProductActions } from "./ProductActions";
 
 const Products = async () => {
   const products = await productService();
@@ -47,20 +47,7 @@ const Products = async () => {
               </div>
 
               {/* Delete and Edit */}
-              <div className="flex items-center gap-4 self-end pt-2 opacity-0 transition-opacity group-hover:opacity-100">
-                <button
-                  title="Excluir"
-                  className="text-zinc-500 transition-colors hover:text-red-400"
-                >
-                  <Trash2 size={18} />
-                </button>
-                <button
-                  title="Editar"
-                  className="text-zinc-500 transition-colors hover:text-white"
-                >
-                  <Edit size={18} />
-                </button>
-              </div>
+              <ProductActions productId={product.id} />
             </div>
           ))}
       </div>
