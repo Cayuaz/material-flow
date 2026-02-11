@@ -9,7 +9,7 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#0a0a0a] text-white font-lato">
+    <main className="min-h-screen text-white font-lato">
       <div className="max-w-6xl mx-auto px-10 py-20">
         <header className="mb-20">
           <h1 className="text-5xl md:text-6xl font-bold tracking-tighter mb-6 bg-linear-to-r from-white to-zinc-600 bg-clip-text text-transparent">
