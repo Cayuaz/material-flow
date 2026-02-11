@@ -9,7 +9,7 @@ export const DeleteMaterialService = async (id: string) => {
   });
 
   if (result) {
-    revalidatePath("/products");
+    revalidatePath("/materials");
     return { success: true };
   } else {
     return { success: false };

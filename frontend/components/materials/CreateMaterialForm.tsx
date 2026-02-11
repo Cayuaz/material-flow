@@ -14,7 +14,7 @@ const CreateMaterialForm = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { isSubmitting, errors },
   } = useForm({
     resolver: zodResolver(materialFormValidation),
   });
@@ -81,7 +81,7 @@ const CreateMaterialForm = () => {
           type="submit"
           className="mt-4 bg-white text-black font-bold py-3 rounded-lg hover:bg-zinc-200 transition-colors uppercase text-sm tracking-widest"
         >
-          Save Material
+          {isSubmitting ? "Saving Material..." : "Save Material"}
         </button>
       </form>
       {/* Feedback toasts */}

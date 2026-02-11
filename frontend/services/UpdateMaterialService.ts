@@ -13,7 +13,7 @@ export const UpdateMaterialService = async (
     body: JSON.stringify(data),
   });
 
-  if (result) revalidatePath("/products");
+  if (result) revalidatePath("/materials");
 
   return result;
 };
