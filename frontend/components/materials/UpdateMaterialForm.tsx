@@ -105,6 +105,7 @@ const UpdateMaterialForm = () => {
         </form>
 
         {/* Feedback toasts */}
+        {/* If request successfully*/}
         {response === "ok" && (
           <div className="absolute bottom-4 left-0 right-0 flex justify-center">
             <ErrorForm
@@ -114,6 +115,7 @@ const UpdateMaterialForm = () => {
             />
           </div>
         )}
+        {/* If request not successfully*/}
         {response === "notOkay" && (
           <div className="absolute bottom-4 left-0 right-0 flex justify-center">
             <ErrorForm

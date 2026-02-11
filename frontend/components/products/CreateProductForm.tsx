@@ -26,6 +26,7 @@ const CreateProductForm = () => {
     },
   });
 
+  //State to ErrorForm component
   const [response, setResponse] = useState("");
 
   const onSubmit = async (data: ProductFormValidation) => {
@@ -83,9 +84,10 @@ const CreateProductForm = () => {
           )}
         </div>
 
+        {/*Materials selector component */}
         <MaterialSelectorField control={control} errors={errors} />
 
-        {/* Botão de Envio */}
+        {/* Send button */}
         <button
           type="submit"
           className="mt-4 bg-white text-black font-bold py-3 rounded-lg hover:bg-zinc-200 transition-colors uppercase text-sm tracking-widest"
@@ -93,6 +95,8 @@ const CreateProductForm = () => {
           {!isSubmitting ? "Save Material" : "Loading..."}
         </button>
       </form>
+      {/* Feedback Toasts */}
+      {/* If request successfully*/}
       {response === "ok" && (
         <ErrorForm
           message="
@@ -101,6 +105,7 @@ const CreateProductForm = () => {
           setResponse={setResponse}
         />
       )}
+      {/* If request not successfully */}
       {response === "notOkay" && (
         <ErrorForm
           message="The product could not be created. Please try again later."

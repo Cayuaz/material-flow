@@ -25,6 +25,7 @@ export const EditAndTrash = ({
   const setProductId = useAddProductId(id, name, price!);
   const setMaterialId = useAddMaterialId(id, name, stock!);
 
+  //Delete function with delete toast
   const handleDelete = () => {
     toast("Are you sure?", {
       description: `You are about to delete ${name}. This action cannot be undone.`,

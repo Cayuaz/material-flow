@@ -25,6 +25,7 @@ export default function RootLayout({
       >
         <Header />
         <main> {children}</main>
+        {/*Toaster to delete toast */}
         <Toaster theme="dark" />
         <Footer />
       </body>

@@ -76,7 +76,7 @@ const CreateMaterialForm = () => {
           )}
         </div>
 
-        {/* Send Button*/}
+        {/* Send button*/}
         <button
           type="submit"
           className="mt-4 bg-white text-black font-bold py-3 rounded-lg hover:bg-zinc-200 transition-colors uppercase text-sm tracking-widest"
@@ -85,6 +85,7 @@ const CreateMaterialForm = () => {
         </button>
       </form>
       {/* Feedback toasts */}
+      {/* If request successfully*/}
       {response === "ok" && (
         <ErrorForm
           message="
@@ -93,6 +94,7 @@ const CreateMaterialForm = () => {
           setResponse={setResponse}
         />
       )}
+      {/* If request not successfully*/}
       {response === "notOkay" && (
         <ErrorForm
           message="The material could not be created. Please try again later."

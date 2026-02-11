@@ -10,14 +10,15 @@ interface ResponseToastProps {
 }
 
 const ErrorForm = ({ message, isOk, setResponse }: ResponseToastProps) => {
-  // Efeito para desaparecer após 5 segundos
+  // Effect disappears after 5 seconds.
   useEffect(() => {
     if (message) {
       const timer = setTimeout(() => {
         setResponse("");
       }, 5000);
 
-      return () => clearTimeout(timer); // Limpa o timer se o componente for desmontado
+      // CLeanup event timer
+      return () => clearTimeout(timer);
     }
   }, [message, setResponse]);
 
@@ -34,7 +35,7 @@ const ErrorForm = ({ message, isOk, setResponse }: ResponseToastProps) => {
     >
       <span className="text-sm font-medium tracking-wide">{message}</span>
 
-      {/* Botão de Fechar (X) */}
+      {/* Close button*/}
       <button
         onClick={() => setResponse("")}
         className="p-1 hover:bg-white/10 rounded-full transition-colors"

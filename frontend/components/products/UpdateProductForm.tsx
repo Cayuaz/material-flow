@@ -98,11 +98,10 @@ const UpdateProductForm = () => {
             )}
           </div>
 
-          {/* Seletor de Materiais */}
-          {/* Passei 'register' e 'availableMaterials' pois o componente filho pode precisar, ajuste conforme a props dele */}
+          {/*Materials selector component */}
           <UpdateMaterialSelectorField control={control} errors={errors} />
 
-          {/* Botão de Salvar */}
+          {/* Saving button */}
           <button
             type="submit"
             disabled={isSubmitting}
@@ -112,7 +111,8 @@ const UpdateProductForm = () => {
           </button>
         </form>
 
-        {/* Toasts de Feedback (Posicionados Absolute ou Fixed dentro do Overlay) */}
+        {/* Feedback Toasts */}
+        {/* If request successfully*/}
         {response === "ok" && (
           <div className="absolute bottom-4 left-0 right-0 flex justify-center">
             <ErrorForm
@@ -122,6 +122,7 @@ const UpdateProductForm = () => {
             />
           </div>
         )}
+        {/* If request not successfully*/}
         {response === "notOkay" && (
           <div className="absolute bottom-4 left-0 right-0 flex justify-center">
             <ErrorForm
