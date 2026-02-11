@@ -54,12 +54,12 @@ Content-Type: application/json
 }
 
 ### Atualizar produto (Troque o ID)
-PATCH {{baseUrl}}/products/c9387803-41d3-4d22-b5e1-16474d179f80
+PATCH {{baseUrl}}/products/84fcb59c-3fda-45f5-9ad4-ed9ee58272af
 Content-Type: application/json
 
 {
-  "price": 99.90,
-  "name": "Bone Streetwear (Re-stock)"
+  "price": 109.90,
+  "materials": []
 }
 
 ### Deletar produto

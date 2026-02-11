@@ -16,7 +16,11 @@ const createMaterialShcema = z.object({
   stock: z.number(),
 });
 
-const updateProductShcema = createProductSchema.partial();
+const updateProductShcema = z.object({
+  name: z.string().optional(),
+  price: z.number().optional(),
+  materials: z.array(materialSchema),
+});
 const updateMaterialSchema = createMaterialShcema.partial();
 
 type UpdateProductSchema = z.infer<typeof updateProductShcema>;

@@ -72,7 +72,7 @@ export class ProductRepository implements IProductRepository {
       data: {
         ...(productData.name && { name: productData.name }),
         ...(productData.price && { price: Decimal(productData.price) }),
-        ...(productData.materials && {
+        ...(productData.materials.length > 0 && {
           materials: {
             deleteMany: {},
             create: productData.materials.map((m) => ({
