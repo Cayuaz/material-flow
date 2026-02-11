@@ -21,6 +21,7 @@ const MaterialSchema = z.object({
 });
 
 const suggestedProductSchema = z.object({
+  id: z.string(),
   name: z.string(),
   price: z.string(),
   suggestedQuantity: z.number(),

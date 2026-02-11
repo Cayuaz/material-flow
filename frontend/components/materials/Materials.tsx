@@ -42,7 +42,7 @@ const Materials = async () => {
             </div>
           ))}
       </div>
-      {materials.length === 0 && <ErrorGetData msg="products" />}
+      {materials.length === 0 && <ErrorGetData msg="materials" />}
     </>
   );
 };

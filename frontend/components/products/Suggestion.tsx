@@ -3,14 +3,14 @@ import { Edit, Trash2 } from "lucide-react"; // Trash2 costuma ser mais moderno
 import ErrorGetData from "../Error";
 import { suggestionService } from "@/services/suggestionService";
 
-const Products = async () => {
-  const products = await suggestionService();
+const Suggestion = async () => {
+  const suggestedProducts = await suggestionService();
 
   return (
     <>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:w-4/5 gap-8 px-10 mx-auto my-4 font-lato">
-        {products.length > 0 &&
-          products.map((product) => (
+        {suggestedProducts.length > 0 &&
+          suggestedProducts.map((product) => (
             <div
               key={product.id}
               className="group relative flex flex-col gap-4 rounded-xl border border-zinc-800 bg-[#1a1b1b]/50 p-6 transition-all hover:border-zinc-700"
@@ -28,23 +28,9 @@ const Products = async () => {
               {/* Separator */}
               <div className="h-px w-full bg-zinc-800" />
 
-              {/* Materials */}
-              <div className="flex flex-col gap-2">
-                <h3 className="text-xs font-bold uppercase tracking-wider text-zinc-500">
-                  Materials for manufacturing:
-                </h3>
-                <div className="flex flex-col gap-2 py-1">
-                  {product.materials.map((material) => (
-                    <div
-                      key={material.id}
-                      className="flex items-center gap-2 text-sm text-zinc-300"
-                    >
-                      <span className="h-1 w-1 rounded-full bg-zinc-700" />
-                      {material.name}
-                    </div>
-                  ))}
-                </div>
-              </div>
+              <span className="text-sm font-semibold text-zinc-400">
+                Quantity suggested: {product.suggestedQuantity}
+              </span>
 
               {/* Delete and Edit */}
               <div className="flex items-center gap-4 self-end pt-2 opacity-0 transition-opacity group-hover:opacity-100">
@@ -64,9 +50,11 @@ const Products = async () => {
             </div>
           ))}
       </div>
-      {products.length === 0 && <ErrorGetData msg="products" />}
+      {suggestedProducts.length === 0 && (
+        <ErrorGetData msg="suggested products" />
+      )}
     </>
   );
 };
 
-export default Products;
+export default Suggestion;
