@@ -8,7 +8,6 @@ export const UpdateProductService = async (
   id: string,
   data: UpdateProductFormValidation,
 ) => {
-  console.log(data);
   const result = await apiFetch(`/products/${id}`, {
     method: "PATCH",
     body: JSON.stringify(data),

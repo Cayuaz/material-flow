@@ -46,7 +46,7 @@ const CreateProductForm = () => {
         className="flex flex-col gap-6 bg-[#1a1b1b]/50 my-10 w-full max-w-lg mx-auto p-8 border border-zinc-800 rounded-xl font-lato shadow-2xl"
       >
         <h2 className="text-white text-xl font-bold border-b border-zinc-800 pb-4 mb-2">
-          Register New Material
+          Register New Product
         </h2>
 
         {/* Name */}

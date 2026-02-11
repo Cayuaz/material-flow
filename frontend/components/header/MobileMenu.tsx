@@ -44,6 +44,14 @@ const MobileMenu = () => {
               {" "}
               <SheetClose asChild>
                 <Link
+                  href={"/"}
+                  className="hover:font-semibold transition-colors text-white text-base"
+                >
+                  Home
+                </Link>
+              </SheetClose>
+              <SheetClose asChild>
+                <Link
                   href={"/products"}
                   className="hover:font-semibold transition-colors text-white text-base"
                 >

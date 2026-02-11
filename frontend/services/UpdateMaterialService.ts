@@ -8,7 +8,6 @@ export const UpdateMaterialService = async (
   id: string,
   data: UpdateMaterialFormValidation,
 ) => {
-  console.log(data);
   const result = await apiFetch(`/materials/${id}`, {
     method: "PATCH",
     body: JSON.stringify(data),

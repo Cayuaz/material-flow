@@ -6,9 +6,6 @@ export const productService = async () => {
 
   const { success, data } = productArrayShema.safeParse(products);
 
-  console.log(products);
-  console.log(success);
-
   if (!success) return [];
 
   return data;

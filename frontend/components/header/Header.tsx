@@ -15,6 +15,9 @@ const Header = () => {
       <nav className=" justify-center items-center hidden sm:flex">
         <ul className="flex gap-6">
           <li className="hover:text-[#171717] transition-colors ">
+            <Link href={"/"}>Home</Link>
+          </li>
+          <li className="hover:text-[#171717] transition-colors ">
             <Link href={"/products"}>Products</Link>
           </li>
           <li className="hover:text-[#171717] transition-colors">

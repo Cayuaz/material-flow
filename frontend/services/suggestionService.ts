@@ -6,9 +6,6 @@ export const suggestionService = async () => {
 
   const { success, data } = suggestedArraySchema.safeParse(products);
 
-  console.log(products);
-  console.log(success);
-
   if (!success) return [];
 
   return data;
