@@ -64,7 +64,7 @@ export const EditAndTrash = ({
   };
 
   return (
-    <div className="flex items-center gap-4 self-end pt-2 opacity-0 transition-opacity group-hover:opacity-100">
+    <div className="flex items-center gap-4 self-end pt-2 opacity-100 sm:opacity-0 transition-opacity group-hover:opacity-100">
       <button
         onClick={handleDelete}
         title="Excluir"
