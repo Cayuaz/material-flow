@@ -28,7 +28,7 @@ const RegisterMobile = () => {
           </SheetClose>
           <SheetClose asChild>
             <Link
-              href={"/material/register"}
+              href={"/materials/register"}
               className="hover:font-semibold transition-colors text-white text-base"
             >
               Material
