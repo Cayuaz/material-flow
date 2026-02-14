@@ -7,7 +7,6 @@
 ![Zustand](https://img.shields.io/badge/Zustand-bear?style=for-the-badge&labelColor=brown&color=463025)
 ![NodeJS](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
-![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
 
 > **Material Flow** é um sistema inteligente de gestão de recursos e planejamento de produção. O projeto resolve o problema de "o que posso produzir hoje?" cruzando a composição técnica dos produtos com o estoque real de insumos.
 
@@ -67,7 +66,6 @@ Diferente de projetos anteriores focados apenas em SPA (Single Page Applications
 - **Banco de Dados:** PostgreSQL (via Neon)
 - **ORM:** Prisma
 - **Arquitetura:** Clean Architecture (SOLID)
-- **Infraestrutura:** Docker
 
 ---
 
@@ -122,7 +120,6 @@ material-flow/
 ### Pré-requisitos
 
 - Node.js (v18+)
-- Docker (Opcional, para o backend)
 
 ### Passo 1: Backend
 
