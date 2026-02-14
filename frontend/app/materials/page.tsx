@@ -6,7 +6,7 @@ import { Suspense } from "react";
 export default async function MaterialsRoute() {
   return (
     <div>
-      <h1 className="text-center text-white text-xl my-10 ">
+      <h1 className="text-center text-white text-xl my-15 uppercase font-bold tracking-wide">
         Registered materials
       </h1>
       <Suspense fallback={<MainSkeleton />}>
