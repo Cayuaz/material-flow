@@ -30,7 +30,7 @@ const Register = () => {
   return (
     <DropdownMenu modal={false} open={isOpen} onOpenChange={setIsOpen}>
       <DropdownMenuTrigger asChild>
-        <span className="text-base  hover:cursor-pointer hover:text-[#171717]">
+        <span className="text-lg hover:cursor-pointer hover:text-[#171717]">
           Register
         </span>
       </DropdownMenuTrigger>

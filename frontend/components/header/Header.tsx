@@ -5,15 +5,15 @@ import MobileMenu from "./MobileMenu";
 
 const Header = () => {
   return (
-    <header className="py-6 flex flex-col items-center justify-center gap-8 bg-[#2b323f] text-white w-full px-4 relative">
+    <header className="py-6 flex flex-col items-center justify-center gap-10 bg-[#2b323f] text-white w-full px-4 relative tracking-wide border-b-2 border-b-zinc-700">
       <Image
         src={"/app-logo.svg"}
         alt="Website logo"
         width={100}
         height={100}
       />
-      <nav className=" justify-center items-center hidden sm:flex">
-        <ul className="flex gap-6">
+      <nav className=" justify-center items-center hidden sm:flex text-lg">
+        <ul className="flex gap-8">
           <li className="hover:text-[#171717] transition-colors ">
             <Link href={"/"}>Home</Link>
           </li>
