@@ -11,7 +11,3 @@ export const formPrice = (value: number) => {
     currency: "BRL",
   }).format(value);
 };
-
-export const setUpdateProduct = () => {
-  "use client";
-};

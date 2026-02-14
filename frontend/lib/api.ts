@@ -12,15 +12,8 @@ export async function apiFetch(endpoint: string, options?: RequestInit) {
   });
 
   if (!response.ok) {
-    // const errorData = await response.json();
-    // throw new Error(errorData.message || "Erro na requisição");
     return false;
   }
 
-  return response.json(); // Já retorna o objeto pronto
+  return response.json();
 }
-//ex:
-// const response = await apiFetch("/materials", {
-//   method: "POST", // Precisa ser string
-//   body: JSON.stringify(data), // Corrigido o typo do stringify
-// });
