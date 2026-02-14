@@ -40,7 +40,10 @@ const Register = () => {
             Create new
           </DropdownMenuLabel>
           <DropdownMenuSeparator className="bg-black" />
-          <DropdownMenuItem className="hover:bg-none">
+          <DropdownMenuItem
+            className="hover:bg-none"
+            onClick={() => setIsOpen(false)}
+          >
             <Link
               href={"/products/register"}
               className="hover:font-semibold transition-colors text-white"
@@ -48,7 +51,10 @@ const Register = () => {
               Product
             </Link>
           </DropdownMenuItem>
-          <DropdownMenuItem>
+          <DropdownMenuItem
+            className="hover:bg-none"
+            onClick={() => setIsOpen(false)}
+          >
             <Link
               href={"/materials/register"}
               className="hover:font-semibold transition-colors text-white "
