@@ -12,8 +12,8 @@ export default function Home() {
     <main className="min-h-screen text-white font-lato">
       <div className="max-w-6xl mx-auto px-10 py-20">
         <header className="mb-20">
-          <h1 className="text-5xl md:text-6xl font-bold tracking-tighter mb-6 bg-linear-to-r from-white to-zinc-600 bg-clip-text text-transparent">
-            Welcome to MFlow
+          <h1 className="text-3xl md:text-4xl font-bold tracking-wide mb-6 bg-linear-to-r from-white to-zinc-600 bg-clip-text text-transparent ">
+            Welcome to Material Flow
           </h1>
           <p className="text-zinc-400 text-lg md:text-xl max-w-2xl leading-relaxed">
             A streamlined management system for your production pipeline.
