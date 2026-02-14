@@ -1,4 +1,10 @@
 import CreateProductForm from "@/components/products/CreateProductForm";
+import { Metadata } from "next/dist/lib/metadata/types/metadata-interface";
+
+export const metadata: Metadata = {
+  title: "Register New Product",
+  description: "Add new items to your production system.",
+};
 
 export default function RegisterProduct() {
   return (

@@ -1,6 +1,13 @@
 import Suggestion from "@/components/products/Suggestion";
 import MainSkeleton from "@/components/MainSkeleton";
 import { Suspense } from "react";
+import { Metadata } from "next/dist/lib/metadata/types/metadata-interface";
+
+export const metadata: Metadata = {
+  title: "Production Suggestion",
+  description:
+    "AI-powered analysis to determine maximum production capacity based on current stock bottlenecks.",
+};
 
 export default async function ProductsRoute() {
   return (

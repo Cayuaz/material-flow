@@ -1,4 +1,10 @@
 import CreateMaterialForm from "@/components/materials/CreateMaterialForm";
+import { Metadata } from "next/dist/lib/metadata/types/metadata-interface";
+
+export const metadata: Metadata = {
+  title: "Register New Material",
+  description: "Add new materials to your production system.",
+};
 
 export default function RegisterMaterial() {
   return (
